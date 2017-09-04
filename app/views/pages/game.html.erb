@@ -1,15 +1,19 @@
-<h1>Pages#game</h1>
-<h3>******** Welcome to the longest word-game!********</h3>
+<div class="container">
+  <div class="title"><h1>The game has started</h1></div>
+  <h3>Your turn!</h3>
+  <div class="result-card">
+    <h4>Here is your grid:</h4>
+    <div id="grid"><%= @array.join(" ") %></div>
+    <form class="form-inline" action="/score" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="form-group mx-sm-3">
+        <label for="question" class="sr-only">What is your best shot?</label>
+        <input type="hidden" name="start_time" value = "<%= @start_time %>">
+        <input type="hidden" name="array" value = "<%= @array.join(" ") %>">
+        <input type="text" class="form-control" id="answer" name="result" placeholder="Form a word!">
+      </div>
+      <button id = "button" type="submit" class="btn btn-primary">Submit!</button>
+    </form>
+  </div>
 
-<p>Here is your grid:</p>
-
-<%= @array.join(" ") %>
-
-<form action="/score" method="post">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <label for="question">What is your best shot?</label>
-  <input type="hidden" name="start_time" value = "<%= @start_time %>">
-  <input type="hidden" name="array" value = "<%= @array.join(" ") %>">
-  <input type="text" id="answer" name="result" placeholder="Please enter an existing word in the grid">
-  <input type="submit" value="Submit!">
-</form>
+</div>

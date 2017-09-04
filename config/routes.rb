@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'pages#home', as: :welcome
   get 'game', to: 'pages#game'
   post 'score', to: 'pages#score'
 

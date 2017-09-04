@@ -1,7 +1,15 @@
-<h1>Pages#home</h1>
-<h3>******** Welcome to the longest word-game!********</h3>
-<form action="/game">
-  <label for="question">What grid size do you want ? </label>
-  <input type="text" id="size" name="grid_size" placeholder="9">
-  <input type="submit" value="Let's play">
-</form>
+<div class="container">
+  <div class="title"><h1>Welcome to the longest word-game!</h1></div>
+  <div class="result-card">
+    <h4>What grid size do you want?</h4>
+    <form class="form-inline" action="/game">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="form-group mx-sm-3">
+        <label for="question" class="sr-only">What grid size do you want?</label>
+        <input type="text" class="form-control" id="size" name="grid_size" placeholder="9">
+      </div>
+      <button type="submit" class="btn btn-primary">Let's play!</button>
+    </form>
+  </div>
+
+</div>
