@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     @time = (DateTime.parse(@end_time.to_s).to_i - DateTime.parse(params[:start_time]).to_i)
     @array = params[:array]
     if parsed_result["found"] == true && in_grid?(@word, @array)
-      @score = compute_score(@time, @word)
+      @score = compute_score(@time, @word).round(1)
       @message = "Well done"
     elsif parsed_result["found"] == true
       @score = 0
