@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     @word = params[:result]
     url = "https://wagon-dictionary.herokuapp.com/#{@word}"
     parsed_result = JSON.parse(open(url).read)
-    @time = (@end_time - params[:start_time].to_i)
+    @time = (DateTime.parse(@end_time.to_s).to_i - DateTime.parse(params[:start_time]).to_i)
     @array = params[:array]
     if parsed_result["found"] == true && in_grid?(@word, @array)
       @score = compute_score(@time, @word)
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
   end
 
   def in_grid?(word, grid)
-    grid = grid.join(" ").downcase.chars
+    grid = grid.downcase.chars
     word.chars.each do |letter|
       if grid.include? letter
         grid.delete_at(grid.find_index(letter))
